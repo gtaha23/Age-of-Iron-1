@@ -1,5 +1,5 @@
 # Age-of-Iron-1
-A newbie game developers game for RTS! 
+A newbie game developers game for RTS! The next projects will be contributed by my friends.
 
 ## About the Game
 You are the commander of the Sphereian Republic and you shall protect your county from the INVADERS!
