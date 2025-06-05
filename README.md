@@ -6,8 +6,8 @@ You are the commander of the Sphereian Republic and you shall protect your count
 Select your regiments and attack the enemy forces.
 
 # Updates & Spoilers
-- A unit selection box is coming.
-- RTS Camera mechanic will be added.
+- Attack System will be completed
+- Map is going to be created
 - mOS Starting again July 🥳
 
 # Screenshots
