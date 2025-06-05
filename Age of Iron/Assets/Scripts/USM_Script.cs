@@ -90,23 +90,20 @@ public class USM_Script : MonoBehaviour
         if (US.Contains(unit) == false) 
         {
             US.Add(unit);
-            TSI(unit, true);
-            EUM(unit, true);
+            SU(unit, true);
         }
         else
         {
-            EUM(unit, false);
-            TSI(unit, false);
+            SU(unit, false);
             US.Remove(unit);
         }
     }
 
-    private void DeselectAll()
+    public void DeselectAll()
     {
         foreach (var unit in US)
         {
-            EUM(unit, false);
-            TSI(unit, false);
+            SU(unit, false);
         }
 
         groundMarker.SetActive(false);
@@ -118,17 +115,31 @@ public class USM_Script : MonoBehaviour
         DeselectAll();
         US.Add(unit);
 
-        TSI(unit, true);
-        EUM(unit, true);
+        SU(unit, true);
     }
 
-    private void EUM(GameObject unit, bool canMove)
+    private void SU(GameObject unit, bool isSelected) // S elect U nit
+    {
+        TSI(unit, isSelected);
+        EUM(unit, isSelected);
+    }
+
+    private void EUM(GameObject unit, bool canMove) // E nable U nit M ovement
     {
         unit.GetComponent<UnitMovement>().enabled = canMove;
     }
 
-    private void TSI(GameObject unit, bool isVisible)
+    private void TSI(GameObject unit, bool isVisible) // T rigger S election Indicator
     {
         unit.transform.GetChild(0).gameObject.SetActive(isVisible);
+    }
+
+    internal void DS(GameObject unit) // D rag S elect
+    {
+        if (US.Contains(unit) == false)
+        { 
+            US.Add(unit);
+            SU(unit, true);
+        }
     }
 }
