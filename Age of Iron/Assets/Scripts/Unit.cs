@@ -1,14 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour
 {
-
+    private float UH; // U nit H ealth
+    public float UMH = 100; // U nit M ax H ealth
+    public int UD = 15; // U nit D amage
+    public HealthTracker HT;
 
     void Start()
     {
         USM_Script.Instance.AUL.Add(gameObject);
+
+        UH = UMH;
+        UpdateH();
+    }
+
+    private void UpdateH()
+    {
+        HT.UpdateSliderValue(UH, UMH);
+        if (UH <= 0)
+        {
+            // Dying Logic
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()
@@ -16,4 +34,9 @@ public class Unit : MonoBehaviour
         USM_Script.Instance.AUL.Remove(gameObject);
     }
 
+    internal void TD(int DTI) // T ake D amage, D amage T o I nflict
+    {
+        UH -= DTI;
+        UpdateH();
+    }
 }
