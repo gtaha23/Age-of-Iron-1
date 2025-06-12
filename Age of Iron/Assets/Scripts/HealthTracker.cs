@@ -24,7 +24,7 @@ public class HealthTracker : MonoBehaviour
         float healthPercentage = Mathf.Clamp01(currentHealth / maxHealth);
 
         // Update the slider value and size
-       // HealthBarSlider.value = healthPercentage;
+       HealthBarSlider.value = healthPercentage;
 
 
 

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour
 {
+    public static Unit Instance { get; set; }
     private float UH; // U nit H ealth
     public float UMH = 100; // U nit M ax H ealth
     public int UD = 15; // U nit D amage
@@ -36,7 +37,17 @@ public class Unit : MonoBehaviour
 
     internal void TD(int DTI) // T ake D amage, D amage T o I nflict
     {
-        UH -= DTI;
+        UH -= DTI - 10;
         UpdateH();
     }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
+    }
+
 }

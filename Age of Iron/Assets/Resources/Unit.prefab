@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3896573900468067667}
   - component: {fileID: 5312296578826713183}
   - component: {fileID: 7162516520733396739}
+  - component: {fileID: 99788084660811335}
   - component: {fileID: -8004243538637158475}
   m_Layer: 7
   m_Name: Unit
@@ -110,7 +111,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -178,7 +179,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d9f6ac226624c4092cae1641ceb1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3041918631305015469, guid: dd3665b4bf6b8094ca5c777ac020f29f, type: 3}
+  enemy: {fileID: 0}
+--- !u!114 &99788084660811335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333210660561971143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaafd864ef8e89428f68c74e1efe13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 5333210660561971143}
+  maxUnits: 5
+  spawnDelay: 1.5
+  spawnAreaSize: {x: 40, y: 0, z: 40}
 --- !u!54 &-8004243538637158475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -405,6 +422,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2851240447946641353, guid: c0fb8fcb57b244e4eb6dbc7b287d77cf, type: 3}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851240447946641353, guid: c0fb8fcb57b244e4eb6dbc7b287d77cf, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4560719962002378034, guid: c0fb8fcb57b244e4eb6dbc7b287d77cf, type: 3}
       propertyPath: m_Material
       value: 
@@ -434,7 +459,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7805812791649303496, guid: c0fb8fcb57b244e4eb6dbc7b287d77cf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0fb8fcb57b244e4eb6dbc7b287d77cf, type: 3}

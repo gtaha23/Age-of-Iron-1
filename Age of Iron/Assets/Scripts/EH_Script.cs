@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public static EnemyHealth Instance { get; set; }
     [Header("Health Settings")]
     public int maxHealth = 100;          // Maximum health of the enemy
     private int currentHealth;
@@ -13,26 +14,17 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthBar();
+        //Enemy_Script.Instance.UpdateH();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateHealthBar();
 
         if (currentHealth <= 0)
         {
             Die();
-        }
-    }
-
-    void UpdateHealthBar()
-    {
-        if (healthBarFill != null)
-        {
-            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
         }
     }
 

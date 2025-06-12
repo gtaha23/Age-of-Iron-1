@@ -7,31 +7,21 @@ using UnityEngine;
 public class UA_Script : MonoBehaviour
 {
     [SerializeField] GameObject enemy; // Assign the enemy GameObject in the Inspector
-    public float AR = 1f; // A ttack R ate
-    public float AS; // A ttack S peed
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered by: " + other.gameObject.name);
-
-        // Check if the object is the enemy GameObject
-        if (other.gameObject == enemy)
+        Enemy_Script enemy = other.GetComponent<Enemy_Script>();
+        if (enemy != null)
         {
-            if (AS <= 0)
-            {
-                Attack();
-                AS = 1f/AR;
-            }
-        }
-        else
-        {
-            Debug.Log("Ignored object: " + other.gameObject.name);
+            Attack(enemy);
         }
     }
 
-    private void Attack()
+    private void Attack(Enemy_Script enemy)
     {
-        var DTI = GetComponent<Unit>().UD;
-        GetComponent<Enemy_Script>().RD(DTI);
+        int damage = GetComponent<Unit>().UD;
+        enemy.RD(damage);
+        Unit.Instance.TD(damage);
     }
+
 }
