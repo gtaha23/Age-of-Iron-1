@@ -21,23 +21,20 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesControl()
     {
-        while (true)
+        int currentCount = CountAliveEnemies();
+
+        if (currentCount < maxEnemies)
         {
-            int currentCount = CountAliveEnemies();
-
-            if (currentCount < maxEnemies)
-            {
-                Vector3 spawnPos = GetRandomSpawnPosition();
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                Debug.Log($"EnemySpawner: Spawned enemy #{currentCount + 1} at {spawnPos}");
-            }
-            else
-            {
-                Debug.Log($"EnemySpawner: Max enemies reached ({currentCount}/{maxEnemies}). Waiting...");
-            }
-
-            yield return new WaitForSeconds(spawnDelay);
+            Vector3 spawnPos = GetRandomSpawnPosition();
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            Debug.Log($"EnemySpawner: Spawned enemy #{currentCount + 1} at {spawnPos}");
         }
+        else
+        {
+            Debug.Log($"EnemySpawner: Max enemies reached ({currentCount}/{maxEnemies}). Waiting...");
+        }
+
+        yield return new WaitForSeconds(spawnDelay);
     }
 
     private int CountAliveEnemies()

@@ -7,7 +7,7 @@ public class UnitSpawner : MonoBehaviour
     public GameObject unitPrefab;         // Assign your enemy prefab
     public int maxUnits = 5;            // Desired maximum alive enemies at any time
     public float spawnDelay = 1.5f;        // Delay (seconds) between spawn attempts
-    public Vector3 spawnAreaSize = new Vector3(40, 0, 40); // Spawn area size
+    public Vector3 spawnAreaSize = new Vector3(10, 0, 10); // Spawn area size
 
     void Start()
     {
@@ -21,23 +21,20 @@ public class UnitSpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesControl()
     {
-        while (true)
+        int currentCount = CountAliveEnemies();
+
+        if (currentCount < maxUnits)
         {
-            int currentCount = CountAliveEnemies();
-
-            if (currentCount < maxUnits)
-            {
-                Vector3 spawnPos = GetRandomSpawnPosition();
-                Instantiate(unitPrefab, spawnPos, Quaternion.identity);
-                Debug.Log($"EnemySpawner: Spawned enemy #{currentCount + 1} at {spawnPos}");
-            }
-            else
-            {
-                Debug.Log($"EnemySpawner: Max enemies reached ({currentCount}/{maxUnits}). Waiting...");
-            }
-
-            yield return new WaitForSeconds(spawnDelay);
+            Vector3 spawnPos = GetRandomSpawnPosition();
+            Instantiate(unitPrefab, spawnPos, Quaternion.identity);
+            Debug.Log($"EnemySpawner: Spawned enemy #{currentCount + 1} at {spawnPos}");
         }
+        else
+        {
+            Debug.Log($"EnemySpawner: Max enemies reached ({currentCount}/{maxUnits}). Waiting...");
+        }
+
+        yield return new WaitForSeconds(spawnDelay);
     }
 
     private int CountAliveEnemies()

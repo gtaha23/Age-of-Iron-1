@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class UA_Script : MonoBehaviour
 {
-    [SerializeField] GameObject enemy; // Assign the enemy GameObject in the Inspector
+    [SerializeField] private GameObject enemy; // Assign the enemy GameObject in the Inspector
+    private Unit attackerUnit;
+
+    private void Awake()
+    {
+        attackerUnit = GetComponent<Unit>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,9 +25,12 @@ public class UA_Script : MonoBehaviour
 
     private void Attack(Enemy_Script enemy)
     {
-        int damage = GetComponent<Unit>().UD;
+        int damage = attackerUnit != null ? attackerUnit.UD : 0;
         enemy.RD(damage);
-        Unit.Instance.TD(damage);
+        if (attackerUnit != null)
+        {
+            attackerUnit.TD(damage);
+        }
     }
 
 }
