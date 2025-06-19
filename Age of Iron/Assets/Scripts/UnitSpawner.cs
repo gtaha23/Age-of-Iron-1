@@ -7,7 +7,7 @@ public class UnitSpawner : MonoBehaviour
     public GameObject unitPrefab;         // Assign your enemy prefab
     public int maxUnits = 5;            // Desired maximum alive enemies at any time
     public float spawnDelay = 1.5f;        // Delay (seconds) between spawn attempts
-    public Vector3 spawnAreaSize = new Vector3(10, 0, 10); // Spawn area size
+    public Vector3 spawnAreaSize = new Vector3(15, 5, 15); // Spawn area size
 
     void Start()
     {
