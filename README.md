@@ -6,9 +6,10 @@ You are the commander of the Sphereian Republic and you shall protect your count
 Select your regiments and attack the enemy forces.
 
 # Updates & Spoilers
-- Attack System will be completed
-- Map is going to be created
-- mOS Starting again July 🥳
+- Attack System will is Completed.
+- Map is completed.
+- mOS Starting in 24.06.2025 !
+- Released Age of Iron on itch.io !
 
 # Screenshots
 - Examples of units & enemy
